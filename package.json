@@ -6,11 +6,13 @@
   "dependencies": {
     "apollo-datasource-rest": "^0.12.0",
     "apollo-server": "^2.23.0",
-    "graphql": "^15.5.0"
+    "graphql": "^15.5.0",
+    "graphql-upload": "^12.0.0"
   },
   "scripts": {
     "test": "jest",
     "start": "node src/index.js",
+    "start-mock": "nodemon src/mock.js",
     "dev": "nodemon src/index.js"
   },
   "devDependencies": {

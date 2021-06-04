@@ -1,6 +1,10 @@
 const { gql } = require("apollo-server");
+const { Upload } = require("graphql-upload");
+
 
 const typeDefs = gql`
+  scalar Upload
+  
   type User {
     id: ID!
     username: String!
@@ -48,16 +52,24 @@ const typeDefs = gql`
     pantLength: ItemSize
     size: ItemSize
     material: [ItemMaterial]
+    file: Upload!
   }
 
-  input ItemInput {
-    category: String
-    type: String
-    color: String
-    pattern: Boolean
-    pantLength: Int
-    size: String
-    material: [String]
+  # input ItemInput {
+  #   category: String
+  #   type: String
+  #   color: String
+  #   pattern: Boolean
+  #   pantLength: Int
+  #   size: String
+  #   material: [String]
+  #   file: String
+  # }
+
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String
   }
 
   type Query {
@@ -68,7 +80,16 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addItem(item: ItemInput): ItemUpdateResponse!
+    addItem(
+      category: String!
+      type: String!
+      color: String!
+      pattern: Boolean
+      pantLength: Int
+      size: String
+      material: [String]
+      file: Upload
+    ): ItemUpdateResponse!
     login(username: String, password: String): User
     register(
       username: String

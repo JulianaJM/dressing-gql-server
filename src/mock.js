@@ -1,17 +1,11 @@
 const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./schema");
-const resolvers = require("./resolvers");
-const UserAPI = require("./datasources/users");
-
 
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
-  dataSources: () => ({
-    userAPI: new UserAPI(),
-  }),
-  uploads: false,
+  mocks: true,
+  uploads: false
 });
 
 
