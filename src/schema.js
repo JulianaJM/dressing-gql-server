@@ -4,7 +4,7 @@ const { Upload } = require("graphql-upload");
 
 const typeDefs = gql`
   scalar Upload
-  
+
   type User {
     id: ID!
     username: String!
@@ -85,7 +85,7 @@ const typeDefs = gql`
       type: String!
       color: String!
       pattern: Boolean
-      pantLength: Int
+      pantLength: String
       size: String
       material: [String]
       file: Upload
